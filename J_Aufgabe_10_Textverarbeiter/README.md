@@ -1,15 +1,38 @@
-# Praktische Aufgabe Nr. 1: Permutation
+# Praktische Aufgabe Nr. 10: Textverarbeiter
 
-In dieser Aufgabe geht es darum, alle möglichen Anordnungen (Permutationen) von Zahlen zu generieren. Die Zahlen 0 bis 3 lassen sich z. B. als 0; 1; 2; 3 oder 1; 3; 0; 2 anordnen. (Es gibt noch 22 weitere Anordnungen dieser Zahlen. Allgemein gibt es für n verschiedene Zahlen n! Anordnungen.)
+In dieser Aufgabe geht es
 
-Realisieren Sie im Paket permutation ein Klasse Permutation mit folgenden Methoden:
+• allgemein um die wortweise Verarbeitung von Texten aus beliebigen zeichenorientierten Datenquellen und
 
-• Einen Konstruktor Permutation(int), durch den für einen Parameter n ein Objekt erzeugt wird, das eine Anordnung der Zahlen 0; 1;... n - 1 repräsentiert. Die Zahlen sollen in dem erzeugten Objekt aufsteigend angeordnet sein. Sie dürfen davon ausgehen, dass der Parameter größer als 0 ist.
+• speziell um die Indexierung von Texten.
 
-• Eine Instanzmethode String gibAlsText(), die eine textuelle Darstellung einer Permutation erzeugt. In dieser Darstellung sollen die Zahlen entsprechend ihrer Anordnung hintereinander stehen, getrennt durch einen Strich. Beispiel: (new Permutation(6)).gibAlsText() soll 0-1-2-3-4-5 liefern.
+Realisieren Sie dazu im Paket textverarbeitung eine Klasse Textverarbeiter. Aufgabe eines Objekts dieser Klasse ist es, den gesamten Text einer zeichenorientierten Datenquelle einzulesen und die einzelnen Wörter einem Wortverarbeiter zur weiteren Verarbeitung zu übergeben.
 
-• Eine Instanzmethode boolean naechstePermutation(), die zu der aktuellen Anordnung der Zahlen die lexikografisch nächste Anordnung berechnet, sofern es noch eine gibt. Falls die aktuelle Anordnung bereits die lexikografisch letzte ist, soll die Methode false liefern, sonst true.
+Implementieren Sie in der Klasse Textverarbeiter folgende Methoden:
 
-Die Methode boolean naechstePermutation() soll zur aktuellen Anordnung die lexikografisch nächste berechnen. Wer den Begriff „lexikografische Ordnung“ nicht kennt, kann sich einfach vorstellen, die Zahlen wären Buchstaben eines Alphabets (0 der erste Buchstabe, 1 der zweite, 2 der dritte usw.). Dann ist eine Anordnung der Zahlen wie ein Wort aus diesen Buchstaben - und die lexikografische Reihenfolge der Wörter entspräche der Reihenfolge der Wörter in einem Lexikon.
+• Einen Konstruktor Textverarbeiter(Wortverarbeiter). Durch den Parameter wird dem Textverarbeiter der Wortverarbeiter übergeben, der die Verarbeitung der einzelnen Wörter übernimmt.
 
-Realisieren Sie im Paket permutation außerdem eine Klasse PermutationTest zum Test der Methoden der Klasse Permutation.
+• Eine Instanzmethode void verarbeite(Reader) throws IOException zur Verarbeitung des Texts aus der übergebenen Datenquelle. Zeichen zur Worttrennung sind .,:;!?-()
+sowie das Leerzeichen.
+
+Realisieren Sie im Paket textverarbeitung außerdem eine Schnittstelle Wortverarbeiter mit folgenden Methoden:
+
+• Eine Instanzmethode void verarbeite(String) zur Verarbeitung eines Worts.
+
+• Eine Instanzmethode void verarbeiteZeilenende(), durch die dem Wortverarbeiter mitgeteilt wird, dass das Ende einer Textzeile erreicht wurde.
+
+Ein Textverarbeiter kann nun zusammen mit geeigneten Wortverarbeitern beliebige Operationen auf den Wörtern eines Texts ausführen. Eine mögliche Operation ist es, einen Wortindex für einen Text zu erstellen. Der Wortindex eines Texts besteht aus den Wörtern des Texts (bestimmte Ausschlusswörter sollen ausgenommen werden) und der Information, in welchen Zeilen des Texts die einzelnen Wörter vorkommen. Der Index enthält kein Wort doppelt.
+
+Realisieren Sie im Paket textverarbeitung eine Klasse Indexierer, die mit einem Textverarbeiter verwendet werden kann, mit folgenden Methoden:
+
+• Einen Konstruktor Indexierer(Collection<String>), durch den ein Indexierer erzeugt wird. Der Parameter gibt die Ausschlusswörter an.
+
+• Eine Instanzmethode List<String> gibWoerter(), die alle Wörter des Index in alphabetisch sortierter Reihenfolge liefert. Es soll die „gewöhnliche“ Ordnung auf Strings verwendet werden.
+
+• Eine Instanzmethode String gibZeilennummern(String), die in Form einer Zeichenkette alle Zeilennummern zu einem Wort liefert. Die Zeichenkette enthält die Zeilennummern in aufsteigender Reihenfolge, jeweils durch Komma und Leerzeichen getrennt. Keine Zeilennummer erscheint doppelt.
+
+Beispiel: Kommt ein Wort in einem Text in den Zeilen 1, 3, 4 und 24 vor und indexiert man diesen Text, dann liefert diese Methode für das Wort die Zeichenkette "1,␣3,␣4,␣24". 
+
+Ist das übergebene Wort nicht im Index enthalten, liefert die Methode die leere Zeichenkette.
+
+Schreiben Sie außerdem zwei Testklassen TextverarbeiterTest und IndexiererTest. Überlegen Sie sich dafür selbst sinnvolle Testmuster. Selbstverständlich ist es ratsam, mit den Testklassen zu beginnen.
