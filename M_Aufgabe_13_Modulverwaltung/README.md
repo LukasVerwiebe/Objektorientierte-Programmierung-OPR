@@ -1,15 +1,29 @@
-# Praktische Aufgabe Nr. 1: Permutation
+# Praktische Aufgabe Nr. 11: Zahlenfolge
 
-In dieser Aufgabe geht es darum, alle möglichen Anordnungen (Permutationen) von Zahlen zu generieren. Die Zahlen 0 bis 3 lassen sich z. B. als 0; 1; 2; 3 oder 1; 3; 0; 2 anordnen. (Es gibt noch 22 weitere Anordnungen dieser Zahlen. Allgemein gibt es für n verschiedene Zahlen n! Anordnungen.)
+Endliche Folgen ganzer Zahlen könnte man durch Objekte des Typs List<Integer> oder int[] repräsentieren. Aber wie sieht es mit unendlichen Folgen aus?
 
-Realisieren Sie im Paket permutation ein Klasse Permutation mit folgenden Methoden:
+Eine elegante Möglichkeit, endliche und unendliche Folgen gleichermaßen zu repräsentieren, besteht in Klassen, die eine Schnittstelle Zahlenfolge implementieren. Zahlenfolge soll folgende Methoden deklarieren:
 
-• Einen Konstruktor Permutation(int), durch den für einen Parameter n ein Objekt erzeugt wird, das eine Anordnung der Zahlen 0; 1;... n - 1 repräsentiert. Die Zahlen sollen in dem erzeugten Objekt aufsteigend angeordnet sein. Sie dürfen davon ausgehen, dass der Parameter größer als 0 ist.
+• Eine Methode boolean hatNaechstes(), die genau dann true liefert, wenn die Zahlenfolge noch ein weiteres Element enthält.
 
-• Eine Instanzmethode String gibAlsText(), die eine textuelle Darstellung einer Permutation erzeugt. In dieser Darstellung sollen die Zahlen entsprechend ihrer Anordnung hintereinander stehen, getrennt durch einen Strich. Beispiel: (new Permutation(6)).gibAlsText() soll 0-1-2-3-4-5 liefern.
+• Eine Methode int gibNaechstes() throws NoSuchElementException, die das nächste Element liefert oder eine Ausnahme wirft, wenn die Folge kein Element mehr enthält.
 
-• Eine Instanzmethode boolean naechstePermutation(), die zu der aktuellen Anordnung der Zahlen die lexikografisch nächste Anordnung berechnet, sofern es noch eine gibt. Falls die aktuelle Anordnung bereits die lexikografisch letzte ist, soll die Methode false liefern, sonst true.
+(Damit ist die Schnittstelle Zahlenfolge vergleichbar der Schnittstelle Enumeration, jedoch eingeschränkt auf Werte des Typs int.)
 
-Die Methode boolean naechstePermutation() soll zur aktuellen Anordnung die lexikografisch nächste berechnen. Wer den Begriff „lexikografische Ordnung“ nicht kennt, kann sich einfach vorstellen, die Zahlen wären Buchstaben eines Alphabets (0 der erste Buchstabe, 1 der zweite, 2 der dritte usw.). Dann ist eine Anordnung der Zahlen wie ein Wort aus diesen Buchstaben - und die lexikografische Reihenfolge der Wörter entspräche der Reihenfolge der Wörter in einem Lexikon.
+Definieren Sie im Paket zahlenfolge die Schnittstelle Zahlenfolge und realisieren Sie im gleichen Paket folgende Klassen, die diese Schnittstelle implementieren:
 
-Realisieren Sie im Paket permutation außerdem eine Klasse PermutationTest zum Test der Methoden der Klasse Permutation.
+• Eine Klasse EndlicheFolge mit einem Konstruktor EndlicheFolge(int[]). Ein Objekt dieser Klasse repräsentiert eine endliche Folge, deren Werte beim Erzeugen explizit angegeben werden.
+
+• Eine Klasse FibonacciFolge mit einem Konstruktor FibonacciFolge(). Ein Objekt dieser Klasse repräsentiert die Folge der Fibonacci-Zahlen.
+
+• Eine Klasse Mischfolge mit einem Konstruktor Mischfolge(Zahlenfolge, Zahlenfolge). Ein Objekt dieser Klasse repräsentiert die Folge, die aus den gemeinsamen Werten zweier Folgen besteht. Sind diese beiden Folgen sortiert, ist die Mischfolge ebenfalls sortiert. (Ansonsten kann die Mischfolge die Elemente in einer beliebigen Reihenfolge liefern. Dies bedeutet, Sie können sich bei der Realisierung auf den Fall der sortierten Folgen konzentrieren und müssen lediglich dafür sorgen, dass im anderen Fall kein Element „unter den Tisch“ fällt.)
+
+Das „Dilemma“ bei dieser Klasse ist, dass Sie für die Methode gibNaechstes nie im Vorhinein wissen, in welcher Folge sich das nächstkleinste Element befindet. Also werden Sie wohl auf beide Folgen zugreifen müssen. Was passiert aber mit dem größeren der beiden Elemente?
+
+Statt hier eine spezielle „Das-Element-merke-ich-mir-für-später-Strategie“ zu implementieren, könnten Sie eine Strategie anwenden, die bei Eingabeströmen, aus denen man wie bei unseren Zahlenfolgen ebenfalls nur „vorwärts“ lesen kann, angewandt wird. Dort gibt es Klassen PushBackInputStream und PushBackReader, die ermöglichen, Bytes oder Zeichen in den Eingabestrom zurückzuschreiben. Realisieren Sie deshalb ...
+
+• Eine Klasse PushBackFolge mit einem Konstruktor PushBackFolge(Zahlenfolge). Ein Objekt dieser Klasse basiert auf einer Zahlenfolge und ergänzt diese um die Fähigkeit, Werte „zurückzuschreiben“. Dazu dient die Methode schreibeZurueck(int). Wird mit dieser Methode die Zahl n zurückgeschrieben, liefert die nächste Anwendung der Methode gibNaechstes den Wert n.
+
+• Eine Klasse EindeutigeFolge mit einem Konstruktor EindeutigeFolge(Zahlenfolge). Ein Objekt dieser Klasse basiert auf einer Zahlenfolge und repräsentiert deren Werte ohne doppelte Elemente. Es wird davon ausgegangen, dass die übergebene Folge sortiert ist.
+
+Zum Testen und für die genaue Semantik der Methoden sind Ihnen für jede der angegebenen Klassen Testklassen vorgegeben.
