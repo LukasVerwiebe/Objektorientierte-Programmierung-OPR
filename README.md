@@ -1,9 +1,13 @@
 # Objektorientierte-Programmierung-OPR
+Dieses Projekt beinhaltet alle Praktischen Übungen des Kurses Objektorientierte Programmierung (OPR).
 
+In diesem Kurs ging es um das erlernen der grundlegeneden Konzepte der Programmierung, die ein zukünftiger Informatiker benötigt. Als Programmiersprache wurde dabei Java verwendet.
 
+In diesem Kurs sollte die Bedeutung von Konzeption und Dokumentation erlernt werden.
 
 
 ## Themanbereiche:
+
 1. Pakete
 2. Klassenhierachie und Polymorphie
 3. Automatisiertes Testen mit JUnit
