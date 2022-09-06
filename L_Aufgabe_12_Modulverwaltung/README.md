@@ -1,15 +1,34 @@
-# Praktische Aufgabe Nr. 1: Permutation
+# Praktische Aufgabe Nr. 12: Modulverwaltung
 
-In dieser Aufgabe geht es darum, alle möglichen Anordnungen (Permutationen) von Zahlen zu generieren. Die Zahlen 0 bis 3 lassen sich z. B. als 0; 1; 2; 3 oder 1; 3; 0; 2 anordnen. (Es gibt noch 22 weitere Anordnungen dieser Zahlen. Allgemein gibt es für n verschiedene Zahlen n! Anordnungen.)
+In dieser Aufgabe üben Sie die Definition und Anwendung von Aufzählungstypen.
 
-Realisieren Sie im Paket permutation ein Klasse Permutation mit folgenden Methoden:
+Stellen Sie sich als Anwendungskontext das Thema Prüfungsplanung vor. Aus einer Datenquelle werden Informationen über Module eingelesen. Jedes Modul ist einem oder mehreren Studiengängen zugeordnet. Die Gesamtheit aller Module wird in einer Modulverwaltung verwaltet, die Ausgangspunkt der Prüfungsplanung sein könnte. 
 
-• Einen Konstruktor Permutation(int), durch den für einen Parameter n ein Objekt erzeugt wird, das eine Anordnung der Zahlen 0; 1;... n - 1 repräsentiert. Die Zahlen sollen in dem erzeugten Objekt aufsteigend angeordnet sein. Sie dürfen davon ausgehen, dass der Parameter größer als 0 ist.
+Realisieren Sie dazu im Paket modul eine Klasse Modul zur Repräsentation eines Moduls, eine Klasse Modulverwaltung zur Repräsentation der Moduldaten eines Fachbereichs, eine Klasse Moduldatenleser sowie einen Aufzählungstyp Studiengang, dessen Werte alle Studiengänge des Fachbereichs repräsentieren. 
 
-• Eine Instanzmethode String gibAlsText(), die eine textuelle Darstellung einer Permutation erzeugt. In dieser Darstellung sollen die Zahlen entsprechend ihrer Anordnung hintereinander stehen, getrennt durch einen Strich. Beispiel: (new Permutation(6)).gibAlsText() soll 0-1-2-3-4-5 liefern.
+Implementieren Sie in der Klasse Modul folgende Methoden:
 
-• Eine Instanzmethode boolean naechstePermutation(), die zu der aktuellen Anordnung der Zahlen die lexikografisch nächste Anordnung berechnet, sofern es noch eine gibt. Falls die aktuelle Anordnung bereits die lexikografisch letzte ist, soll die Methode false liefern, sonst true.
+• Einen Konstruktor Modul(String, String). Der erste Parameter ist das Kürzel des Moduls, der zweite die Bezeichnung.
 
-Die Methode boolean naechstePermutation() soll zur aktuellen Anordnung die lexikografisch nächste berechnen. Wer den Begriff „lexikografische Ordnung“ nicht kennt, kann sich einfach vorstellen, die Zahlen wären Buchstaben eines Alphabets (0 der erste Buchstabe, 1 der zweite, 2 der dritte usw.). Dann ist eine Anordnung der Zahlen wie ein Wort aus diesen Buchstaben - und die lexikografische Reihenfolge der Wörter entspräche der Reihenfolge der Wörter in einem Lexikon.
+• Eine Instanzmethode void fuegeHinzu(Studiengang) throws IllegalArgumentException. Durch Anwendung der Methode wird einem Modul mitgeteilt, dass es in dem entsprechenden Studiengang angeboten wird. Ein Modul kann in mehreren Studiengängen angeboten werden. Es soll eine Ausnahme mit der Meldung "Ein Modul kann nicht gleichzeitig zu Bachelor- und Masterstudiengang gehören." geworfen werden, wenn einem Modul sowohl ein Bachelor-, als auch ein Masterstudiengang übergeben wird.
 
-Realisieren Sie im Paket permutation außerdem eine Klasse PermutationTest zum Test der Methoden der Klasse Permutation.
+Implementieren Sie in der Klasse Modulverwaltung folgende Methoden:
+
+• Einen Konstruktor Modulverwaltung(), um eine Modulverwaltung zu erzeugen, in der sich anfangs kein Modul befindet.
+
+• Eine Instanzmethode void fuegeHinzu(Modul) throws IllegalArgumentException, durch die der Modulverwaltung ein Modul hinzugefügt wird. Es soll eine Ausnahme mit der
+Meldung "Das Modul ist bereits vorhanden." geworfen werden, wenn bereits ein Modul mit dem gleichen Kürzel vorhanden ist.
+
+• Eine Instanzmethode Set<Modul> gibModule(boolean fuerBachelor), die entweder alle Bachelormodule (für Parameter true) oder alle Mastermodule liefert. Das Ergebnis der Methode soll derart sein, dass die Module bei Iteration sortiert (nach Modulkürzel) durchlaufen würden.
+
+Implementieren Sie in der Klasse Moduldatenleser folgende Methode:
+
+• Eine Instanzmethode void lies(Reader, Modulverwaltung), um aus den Daten der Datenquelle Informationen über Module zu lesen, daraus Modul-Objekte zu erzeugen und diese der Modulverwaltung zu übergeben.
+
+• Die Datenquelle enthält in einzelnen Zeilen die Daten der Module. Jede Zeile hat folgenden Aufbau (Beispiel): OPR;Objektorientierte Programmierung;IN_BA,MI_BA,WI_BA Sie dürfen davon ausgehen, dass die Datenquelle keine Formatfehler enthält.
+
+Implementieren Sie einen Aufzählungstyp Studiengang mit folgenden Eigenschaften:
+
+• Der Typ enthält Werte mit den Namen IN_BA, MI_BA, WI_BA, IN_MA, MI_MA, WI_MA und IS_MA.
+
+• Eine Instanzmethode boolean istBachelorstudiengang(), durch die ein Studiengang angibt, ob er ein Bachelorstudiengang ist.
