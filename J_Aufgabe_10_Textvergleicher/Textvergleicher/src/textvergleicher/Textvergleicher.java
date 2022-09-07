@@ -10,11 +10,16 @@ import java.util.Collections;
 import java.util.StringTokenizer;
 
 /**
- *
+ * Klasse Textvergleicher
  * @author Lukas
  */
 public class Textvergleicher {
     
+    /**
+     * Methode für die Eingabe und Ausgabe von Testwerten
+     * @param args
+     * @throws IOException 
+     */
     public static void main(String[] args) throws IOException {
         
         Textvergleicher vergleicher = new Textvergleicher();
@@ -27,10 +32,16 @@ public class Textvergleicher {
         reader1 = new StringReader(text1);
         reader2 = new StringReader(text2);        
         
-        System.out.println(vergleicher.sindGleich(reader1, reader2));
-        
+        System.out.println(vergleicher.sindGleich(reader1, reader2));        
     }
     
+    /**
+     * Vergleich der Texte miteinander
+     * @param reader1
+     * @param reader2
+     * @return
+     * @throws IOException 
+     */
     public boolean sindGleich(Reader reader1, Reader reader2) throws IOException {
         boolean ergebnis = false;
         ArrayList<String> liste1 = new ArrayList();

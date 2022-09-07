@@ -5,6 +5,7 @@ package parser;
  * Enthält abstrakte Instanzmethode int gibWert(Variablenbelegung), die den Wert
  * dieses Ausdrucks basierend auf der Variablenbelegung liefert.
  * @author Lukas
+ * 
  */
 public abstract class Ausdruck {
     

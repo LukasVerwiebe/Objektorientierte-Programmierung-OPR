@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 /**
- *
- * 9 Modulverwaltung
+ * Klasse Moduldatenleser
+ * @author Lukas
  */
 public class Moduldatenleser {
     private Modulverwaltung verwaltung;

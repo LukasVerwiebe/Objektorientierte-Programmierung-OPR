@@ -6,6 +6,7 @@ import java.util.StringTokenizer;
 /**
  * Diese Klasse erstellt die Tokens
  * @author Lukas
+ *
  */
 public class Tokens {
     

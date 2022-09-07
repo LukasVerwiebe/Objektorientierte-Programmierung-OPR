@@ -6,18 +6,26 @@ import java.util.Collections;
 import java.util.HashMap;
 
 /**
- *
+ * Klasse Fahrzeugmanager
  * @author Lukas
  */
 public class Fahrzeugmanager {
-    
+    // Initialisierung Variablen
     private HashMap<String, Fahrzeug> zuordnung = new HashMap();
     private ArrayList<Buchung> buchungen = new ArrayList();
     
+    /**
+     * Leerer Konstruktor
+     */
     public Fahrzeugmanager() {
         
     }
     
+    /**
+     * Methode zum hinzufügen eines neues Fahrzeugs
+     * @param name
+     * @param standort 
+     */
     public void fuegeFahrzeugHinzu(String name, String standort) {
         Fahrzeug fahrzeug = new Fahrzeug(name, standort);
         if(zuordnung.containsKey(name)) {
@@ -27,6 +35,10 @@ public class Fahrzeugmanager {
         }       
     }
     
+    /**
+     * Methode für die Zurückgabe aller Fahrzeugnamen
+     * @return 
+     */
     public ArrayList<String> gibFahrzeugnamen() {
         ArrayList<String> fahrzeugnamen = new ArrayList();        
         fahrzeugnamen.addAll(zuordnung.keySet());
@@ -38,6 +50,11 @@ public class Fahrzeugmanager {
         return fahrzeugnamen;
     }
     
+    /**
+     * Zurückgabe aller Fahrzeuge eines Standorts
+     * @param standort
+     * @return 
+     */
     public ArrayList<String> gibFahrzeugnamen(String standort) {
         // Liste mit den Namen, die am ende zurückgegeben wird.
         ArrayList<String> ausgabeNamen = new ArrayList();
@@ -75,6 +92,13 @@ public class Fahrzeugmanager {
         return ausgabeNamen;
     }
     
+    /**
+     * Methode zum Buchen eines Fahrzeugs
+     * @param name
+     * @param start
+     * @param ende
+     * @return 
+     */
     public boolean bucheFahrzeug(String name, String start, String ende) {        
         boolean ergebnis = false;
         boolean vorhanden = true;
@@ -99,6 +123,13 @@ public class Fahrzeugmanager {
         return ergebnis;
     }
     
+    /**
+     * Rückgabe einer Liste aller Verfügbaren Fahrzeuge
+     * @param standort
+     * @param start
+     * @param ende
+     * @return 
+     */
     public ArrayList<String> gibVerfuegbareFahrzeuge(String standort, String start, String ende) {
         String text = "";
         ArrayList<String> buchungListe = new ArrayList();

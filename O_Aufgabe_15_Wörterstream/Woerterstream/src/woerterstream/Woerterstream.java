@@ -6,26 +6,30 @@ import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 /**
- *
+ * Klasse Woerterstream
  * @author Lukas
  */
 public class Woerterstream {
     
-    public static void main(String[] args) {
-        
-        Woerterstream stream = new Woerterstream();
-        
+    /**
+     * Eingabe und Ausgabe von Testwerten
+     * @param args 
+     */
+    public static void main(String[] args) {        
+        Woerterstream stream = new Woerterstream();        
         stream.gibStream().limit(100).forEach(System.out::println);
         System.out.println("ST " + stream.gibWerte());
         
     }
     
-    
+    // Initialisierung Variablen:
     private Stream<String> woerter;
-    private ArrayList<String> worterNeu;
-    
+    private ArrayList<String> worterNeu;    
     private static final String text = " abcdefghijklmnopqrstuvwxyz";
     
+    /**
+     * Konstruktor Woerterstream
+     */
     public Woerterstream() {
         this.worterNeu = new ArrayList();
         
@@ -75,13 +79,16 @@ public class Woerterstream {
                 }               
                 //System.out.println("1" +teilwort);
                 return teilwort;
-            }
-        
+            }        
         });
         
         return this.woerter;
     }
     
+    /**
+     * Rückgabe von Wert an Position 3
+     * @return 
+     */
     public String gibWerte() {
         return this.worterNeu.get(3);
     }

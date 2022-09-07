@@ -3,10 +3,8 @@ package modul;
 import java.util.HashMap;
 
 /**
- *
- * 
- * 9 Modulverwaltung
- * Repräsentation der Moduldaten eines Fachbereichs
+ * Klasse Modulverwaltung
+ * @author Lukas
  */
 public class Modulverwaltung {
     private final HashMap<String, Modul> module;

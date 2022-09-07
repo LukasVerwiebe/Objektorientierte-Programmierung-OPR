@@ -5,6 +5,7 @@ package personal;
  * In dieser Klasse wurden die Funktionen für die Vorgesetzten erstellt
  * Die Klasse Erbt die Funktionalitäten von Mitarbeiter
  * @author Lukas
+ *
  */
 public class Vorgesetzter extends Mitarbeiter {   
     

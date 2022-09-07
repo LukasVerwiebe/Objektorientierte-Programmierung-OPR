@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * 9 Modulverwaltung
- * Repräsentation eines Moduls
+ * Klasse Modul
+ * @author Lukas
  */
 public class Modul {
     private String kuerzel;

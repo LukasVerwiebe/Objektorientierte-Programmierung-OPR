@@ -1,11 +1,11 @@
 package carsharing;
 
 /**
- *
+ * Klasse für den Test der Aufgabe
  * @author Lukas
  */
 public class Test {
-    
+    // Ausgabe und Eingabe von Testwerten
     public static void main(String[] args) {
         
         Fahrzeug fahrzeug1 = new Fahrzeug("Test 1", "Standort 1");

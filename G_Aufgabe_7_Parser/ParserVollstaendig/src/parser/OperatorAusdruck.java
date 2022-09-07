@@ -6,6 +6,7 @@ package parser;
  * arithmetischer Ausdruck mit den angegebenen Teilausdrücken und dem
  * Operatorsymbol erzeugt wird.
  * @author Lukas
+ * 
  */
 public class OperatorAusdruck extends Ausdruck {
     

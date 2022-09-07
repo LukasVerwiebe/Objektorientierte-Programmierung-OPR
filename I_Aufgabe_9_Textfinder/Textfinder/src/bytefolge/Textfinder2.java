@@ -10,11 +10,16 @@ import java.util.Set;
 import java.util.TreeSet;
 
 /**
- *
+ * Version 2 der Klasse Textfinder
  * @author Lukas
  */
 public class Textfinder2 {
     
+    /**
+     * Methode für die Eingabe und Ausgabe von Testwerten
+     * @param args
+     * @throws IOException 
+     */
     public static void main(String[] args) throws IOException {
         String s = "Hallo@Test,-dies-------ist ein Test. Der Test ist  beendet.";        
         String s2 = "Dies ist ein Test Text. Der Text testet die Methoden.";
@@ -32,10 +37,17 @@ public class Textfinder2 {
         test3.gibWoerter();
     }
     
+    // Initialisierung Variablen:
     private InputStream stream;
     private int wert;
     private ArrayList<String> liste = new ArrayList();
     
+    /**
+     * Konstruktor Textfinder
+     * @param stream
+     * @param wert
+     * @throws IOException 
+     */
     public Textfinder2(InputStream stream, int wert) throws IOException {
         this.liste = new ArrayList();       
         int symbol = stream.read(); 
@@ -63,6 +75,11 @@ public class Textfinder2 {
 //        }
     }
     
+    /**
+     * Rückgabe aller Wörter
+     * @return
+     * @throws IOException 
+     */
     public Set<String> gibWoerter() throws IOException {
         int laenge = liste.size();
         Set<String> woerter = new HashSet<>();
@@ -77,6 +94,11 @@ public class Textfinder2 {
         return woerter;
     }
     
+    /**
+     * Rückgabe der Häufigkeit von Wörtern
+     * @param wort
+     * @return 
+     */
     public int gibHaeufigkeit(String wort) {
         int ergebnis = 0;
         for(int i = 0; i < liste.size(); i++) {
@@ -85,6 +107,5 @@ public class Textfinder2 {
             }
         }        
         return ergebnis;
-    }
-    
+    }    
 }

@@ -10,6 +10,7 @@ import org.junit.Before;
 /**
  *
  * @author Lukas
+ *
  */
 public class StringTokenizerTest {
     

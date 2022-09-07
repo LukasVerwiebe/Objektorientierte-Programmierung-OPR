@@ -7,6 +7,7 @@ import junit.framework.TestCase;
 /**
  * Test Klasse zum Testen der Parser Klasse.
  * @author Lukas
+ *
  */
 public class ParserTest extends TestCase {
     /** Parser fuer dir Testautrufe. */

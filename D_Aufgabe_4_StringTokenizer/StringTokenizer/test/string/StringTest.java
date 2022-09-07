@@ -9,6 +9,7 @@ import org.junit.Before;
 /**
  * Test Klasse Für die Tokens
  * @author Lukas
+ *
  */
 public class StringTest {
     

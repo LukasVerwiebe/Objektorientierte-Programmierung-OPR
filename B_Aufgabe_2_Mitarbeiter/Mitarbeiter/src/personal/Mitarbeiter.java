@@ -4,6 +4,7 @@ package personal;
 /**
  * In dieser Klasse wurden die Funktionen für die Mitarbeiter erstellt
  * @author Lukas
+ *
  */
 public class Mitarbeiter {
     // Initialisierung Variablen:

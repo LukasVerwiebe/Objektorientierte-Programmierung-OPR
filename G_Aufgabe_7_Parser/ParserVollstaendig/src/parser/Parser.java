@@ -9,6 +9,7 @@ import java.util.StringTokenizer;
 /**
  * Parser zum parsen von Termausdruecken.
  * @author Lukas
+ * 
  */
 public class Parser {
 

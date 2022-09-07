@@ -2,7 +2,7 @@
 package woerterstream;
 
 /**
- *
+ * Testklasse für die Aufgabe
  * @author Lukas
  */
 public class WoerterStreamTest {

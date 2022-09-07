@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+/**
+ * Testklasse für den Textverarbeiter
+ * @author Lukas
+ */
 class MockupWortverarbeiter implements Wortverarbeiter {
     public ArrayList<String> verarbeiteteWoerter;
     public int zeilenIndex;

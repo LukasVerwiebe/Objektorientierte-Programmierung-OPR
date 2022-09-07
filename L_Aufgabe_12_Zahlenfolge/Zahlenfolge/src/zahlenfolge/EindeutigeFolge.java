@@ -42,6 +42,4 @@ public class EindeutigeFolge implements Zahlenfolge {
         }
         return rueckgabeWert;
     }
-    
-    
 }

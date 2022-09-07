@@ -2,7 +2,7 @@
 package textverarbeitung;
 
 /**
- *
+ * Interface Wortverarbeiter
  * @author Lukas
  */
 public interface Wortverarbeiter {

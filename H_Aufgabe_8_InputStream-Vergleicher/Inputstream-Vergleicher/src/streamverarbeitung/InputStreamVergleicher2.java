@@ -6,13 +6,17 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- *
+ * Version 2 der Klasse InputStreamVergleicher
  * @author Lukas
  */
 public class InputStreamVergleicher2 {
     
-    public static void main(String[] args) throws IOException {
-        
+    /**
+     * Methode für die Eingabe und Ausgabe von Testwerten
+     * @param args
+     * @throws IOException 
+     */
+    public static void main(String[] args) throws IOException {        
         InputStreamVergleicher2 vergleicher = new InputStreamVergleicher2();
         String test1 = "Test 1234";
         String test2 = "Test 1234";
@@ -20,13 +24,19 @@ public class InputStreamVergleicher2 {
         String test4 = "Testas";
         
         ByteArrayInputStream text1 = new ByteArrayInputStream(test1.getBytes());
-        ByteArrayInputStream text2 = new ByteArrayInputStream(test3.getBytes());
+        ByteArrayInputStream text2 = new ByteArrayInputStream(test3.getBytes());        
         
-        
-        System.out.println(vergleicher.sindGleich(text1, text2, 7));
-        
+        System.out.println(vergleicher.sindGleich(text1, text2, 7));        
     }
     
+    /**
+     * Vergleichen der InputStream Objekte miteinander
+     * @param is1
+     * @param is2
+     * @param leange
+     * @return
+     * @throws IOException 
+     */
     public boolean sindGleich(InputStream is1, InputStream is2, long leange) 
             throws IOException {
         
@@ -65,6 +75,5 @@ public class InputStreamVergleicher2 {
         is1.close();
         is2.close();
         return ergebnis;
-    }
-    
+    }    
 }

@@ -5,19 +5,23 @@ import java.util.NoSuchElementException;
 import java.util.function.IntBinaryOperator;
 
 /**
- *
+ * Klasse UnendlicheFolge
  * @author Lukas
  */
 public class UnendlicheFolge {
-    
+    // Initialisierung Variablen:
     private int wert1;
-    private int wert2;
-    
+    private int wert2;    
     private boolean start;
-    private boolean start2;
-    
+    private boolean start2;    
     private IntBinaryOperator operator;
     
+    /**
+     * Konstruktor für UnendlicheFolge
+     * @param wert1
+     * @param wert2
+     * @param operator 
+     */
     public UnendlicheFolge(int wert1, int wert2, IntBinaryOperator operator) {
         this.wert1 = wert1;
         this.wert2 = wert2;

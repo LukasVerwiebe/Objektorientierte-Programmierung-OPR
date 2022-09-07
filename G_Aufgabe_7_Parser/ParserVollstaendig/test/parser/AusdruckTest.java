@@ -6,7 +6,8 @@ import org.junit.Test;
 
 /**
  *
- * @author apex
+ * @author Lukas
+ *
  */
 public class AusdruckTest {
 

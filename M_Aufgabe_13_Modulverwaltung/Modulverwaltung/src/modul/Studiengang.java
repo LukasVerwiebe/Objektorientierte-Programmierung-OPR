@@ -1,11 +1,8 @@
 package modul;
 
 /**
- *
- * 
- * 9 Modulverwaltung
- * Aufzählungstyp, dessen Werte alle Studiengänge
- * des Fachbereichs repräsentieren.
+ * Klasse Studiengang
+ * @author Lukas
  */
 public enum Studiengang {
     IN_BA(true),

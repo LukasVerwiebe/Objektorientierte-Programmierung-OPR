@@ -18,14 +18,20 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- *
+ * Version 1 der Klasse Textfinder
  * @author Lukas
  */
 public class Textfinder {
-    
-    //private HashMap<String, Integer> listee = new HashMap();
+    // Initialisierung Variablen:    
     private ArrayList<String> liste = new ArrayList();    
+    //private HashMap<String, Integer> listee = new HashMap();
     
+    /**
+     * Konstruktor Textfinder
+     * @param is
+     * @param laenge
+     * @throws IOException 
+     */
     public Textfinder(InputStream is, int laenge) throws IOException {       
         this.liste = new ArrayList();       
         int symbol = is.read();      
@@ -53,6 +59,10 @@ public class Textfinder {
         }
     }    
     
+    /**
+     * Rückgabe aller Wörter
+     * @return 
+     */
     public Set<String> gibWoerter() {
         int laenge = liste.size();
         Set<String> woerter = new HashSet<>();
@@ -66,6 +76,11 @@ public class Textfinder {
         return woerter;
     }
     
+    /**
+     * Rückgabe der Häufigkeit von Wörtern
+     * @param wort
+     * @return 
+     */
     public int gibHaeufigkeit(String wort) {
         int ergebnis = 0;
         for(int i = 0; i < liste.size(); i++) {
@@ -76,8 +91,12 @@ public class Textfinder {
         return ergebnis;
     }
     
-    public static void main(String[] args) throws IOException {
-        
+    /**
+     * Methode für die Eingabe und Ausgabe von Testwerten
+     * @param args
+     * @throws IOException 
+     */
+    public static void main(String[] args) throws IOException {        
         String s = "Hallo@Test,-dies-------ist ein Test. Der Test ist  beendet.";        
         String s2 = "Dies ist ein Test Text. Der Text testet die Methoden.";
         String s3 = "Der Die das Test 12345*Welt der die das Test Hallo Welt-Welt";

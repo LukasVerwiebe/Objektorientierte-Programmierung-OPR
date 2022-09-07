@@ -10,15 +10,19 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- *
+ * Klasse Indexierer Implementiert das Interface Wortverarbeiter
  * @author Lukas
  */
 public class Indexierer implements Wortverarbeiter {
-    
+    // Initialisierung Variablen:
     private HashMap<String, HashSet<Integer>> gefundeneWoerter;
     private HashSet<String> ausschlussWoerter;
     private int zeilenIndex;
     
+    /**
+     * Konstruktor Indexierer
+     * @param index 
+     */
     public Indexierer(Collection<String> index) {
         this.gefundeneWoerter = new HashMap<String, HashSet<Integer>>();
         this.ausschlussWoerter = new HashSet<String>();
@@ -30,12 +34,21 @@ public class Indexierer implements Wortverarbeiter {
         }
     }
     
+    /**
+     * Rückgabe der Wörter
+     * @return 
+     */
     public List<String> gibWoerter() {
         ArrayList<String> rueckgabeListe = new ArrayList<String>(this.gefundeneWoerter.keySet());
         sort(rueckgabeListe);
         return rueckgabeListe;
     }
     
+    /**
+     * Rückgabe der Zeilennummer an der sich das Eingegebene Wort befindet
+     * @param wort
+     * @return 
+     */
     public String gibZeilennummern(String wort) {
         String rueckgabeZeichenkette = "";
         
@@ -51,7 +64,11 @@ public class Indexierer implements Wortverarbeiter {
         }        
         return rueckgabeZeichenkette;
     }
-
+    
+    /**
+     * Überschreiben der Methode: verarbeite
+     * @param wort 
+     */
     @Override
     public void verarbeite(String wort) {
         if(!this.ausschlussWoerter.contains(wort)) {
@@ -65,6 +82,9 @@ public class Indexierer implements Wortverarbeiter {
         }
     }
 
+    /**
+     * Überschreiben der Methode: verarbeiteZeilenende
+     */
     @Override
     public void verarbeiteZeilenende() {
         this.zeilenIndex++;

@@ -5,6 +5,7 @@ package personal;
  * In dieser Klasse wurden die Testfälle für die Klassen Mitarbeiter und 
  * Vorgesetzter realisiert.
  * @author Lukas
+ *
  */
 public class PersonalTest {
     

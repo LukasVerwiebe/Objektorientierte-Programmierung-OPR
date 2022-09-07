@@ -12,6 +12,7 @@ import java.util.HashMap;
  * gibWert(String), die den Wert liefert, der der angegebenen Variable
  * zugeordnet ist.
  * @author Lukas
+ * 
  */
 public class Variablenbelegung {
 

@@ -11,14 +11,23 @@ import java.util.StringTokenizer;
  * @author Lukas
  */
 public class Textverarbeiter {
-    
+    // Initialisierung Variablen:
     private static final String TRENNZEICHEN = " .,:;!?-()";
     private Wortverarbeiter verarbeiter;
     
+    /**
+     * Konstruktor Textverarbeiter
+     * @param wort 
+     */
     public Textverarbeiter(Wortverarbeiter wort) {
         this.verarbeiter = wort;
     }
     
+    /**
+     * Methode für das Einfügen von Trennzeichen
+     * @param reader
+     * @throws IOException 
+     */
     public void verarbeite(Reader reader) throws IOException {
         BufferedReader zeileLesen = new BufferedReader(reader);
         String zeile = zeileLesen.readLine();
