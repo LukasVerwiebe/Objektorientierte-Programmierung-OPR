@@ -1,4 +1,4 @@
-# Praktische Aufgabe Nr. 11: Zahlenfolge
+# Praktische Aufgabe Nr. 12: Zahlenfolge
 
 Endliche Folgen ganzer Zahlen könnte man durch Objekte des Typs List<Integer> oder int[] repräsentieren. Aber wie sieht es mit unendlichen Folgen aus?
 
