@@ -1,15 +1,33 @@
-# Praktische Aufgabe Nr. 1: Permutation
+# Praktische Aufgabe Nr. 6: Carsharing
 
-In dieser Aufgabe geht es darum, alle möglichen Anordnungen (Permutationen) von Zahlen zu generieren. Die Zahlen 0 bis 3 lassen sich z. B. als 0; 1; 2; 3 oder 1; 3; 0; 2 anordnen. (Es gibt noch 22 weitere Anordnungen dieser Zahlen. Allgemein gibt es für n verschiedene Zahlen n! Anordnungen.)
+In dieser Aufgabe sollen einige Funktionen einer CarSharing-Anwendung realisiert werden. CarSharing-Unternehmen unterhalten Standorte, an denen Fahrzeuge stationiert sind. Jedes Fahrzeug besitzt einen Namen und einen festen Standort.
 
-Realisieren Sie im Paket permutation ein Klasse Permutation mit folgenden Methoden:
+Alle Funktionen sollen in einer Klasse Fahrzeugmanager realisiert werden, die im Paket carsharing liegt. Ein Fahrzeugmanager verwaltet die Fahrzeuge eines CarSharing-Unternehmens.
 
-• Einen Konstruktor Permutation(int), durch den für einen Parameter n ein Objekt erzeugt wird, das eine Anordnung der Zahlen 0; 1;... n - 1 repräsentiert. Die Zahlen sollen in dem erzeugten Objekt aufsteigend angeordnet sein. Sie dürfen davon ausgehen, dass der Parameter größer als 0 ist.
+Realisieren Sie in der Klasse Fahrzeugmanager folgenden Methoden:
 
-• Eine Instanzmethode String gibAlsText(), die eine textuelle Darstellung einer Permutation erzeugt. In dieser Darstellung sollen die Zahlen entsprechend ihrer Anordnung hintereinander stehen, getrennt durch einen Strich. Beispiel: (new Permutation(6)).gibAlsText() soll 0-1-2-3-4-5 liefern.
+• Einen Konstruktor Fahrzeugmanager(), durch den ein Objekt dieser Klasse erzeugt wird. Ein gerade erzeugter Fahrzeugmanager verwaltet anfangs keine Fahrzeuge.
 
-• Eine Instanzmethode boolean naechstePermutation(), die zu der aktuellen Anordnung der Zahlen die lexikografisch nächste Anordnung berechnet, sofern es noch eine gibt. Falls die aktuelle Anordnung bereits die lexikografisch letzte ist, soll die Methode false liefern, sonst true.
+• Eine Instanzmethode void fuegeFahrzeugHinzu(String, String), durch die dem Fahrzeugmanager ein Fahrzeug mit einem bestimmten Namen (erster Parameter) und Standort
+(zweiter Parameter) hinzugefügt wird. Falls der Fahrzeugmanager bereits ein Fahrzeug mit diesem Namen verwaltet, soll kein Fahrzeug hinzugefügt werden.
 
-Die Methode boolean naechstePermutation() soll zur aktuellen Anordnung die lexikografisch nächste berechnen. Wer den Begriff „lexikografische Ordnung“ nicht kennt, kann sich einfach vorstellen, die Zahlen wären Buchstaben eines Alphabets (0 der erste Buchstabe, 1 der zweite, 2 der dritte usw.). Dann ist eine Anordnung der Zahlen wie ein Wort aus diesen Buchstaben - und die lexikografische Reihenfolge der Wörter entspräche der Reihenfolge der Wörter in einem Lexikon.
+• Eine Instanzmethode ArrayList<String> gibFahrzeugnamen(), die die Namen aller Fahrzeuge alphabetisch sortiert zurückgibt.
 
-Realisieren Sie im Paket permutation außerdem eine Klasse PermutationTest zum Test der Methoden der Klasse Permutation.
+• Eine Instanzmethode ArrayList<String> gibFahrzeugnamen(String), die alphabetisch sortiert die Namen aller Fahrzeuge des angegebenen Standorts zurückgibt.
+
+• Eine Instanzmethode boolean bucheFahrzeug(String, String, String), mit der das Fahrzeug mit dem angegebenen Namen (erster Parameter) für einen bestimmten Zeitraum
+gebucht wird. Der Beginn des Zeitraums wird durch den zweiten Parameter, das Ende durch den dritten Parameter angegeben. Die Angabe der Zeitpunkte erfolgt im Format JJJJ/MM/TT HH:MM, z. B. 2005/04/22 09:35 für den 22. April 2005, 9:35 Uhr. Die Methode liefert genau dann true zurück, wenn das angegebene Fahrzeug für den gewünschten
+Zeitraum gebucht werden kann, d. h. sich der gewünschte Buchungszeitraum mit keiner anderen Buchung dieses Fahrzeugs überschneidet. Kurz gesagt: das Fahrzeug ist in der
+gewünschten Zeit frei.
+
+• Eine Instanzmethode ArrayList<String> gibVerfuegbareFahrzeuge(String, String, String), die alphabetisch sortiert die Namen aller Fahrzeuge des angegebenen Standorts (erster Parameter) zurückgibt, die in einem bestimmten Zeitraum (zweiter und dritter Parameter) verfügbar sind. Ein Fahrzeug ist in einem Zeitraum verfügbar, wenn es für diesen Zeitraum gebucht werden kann.
+
+Sie können davon ausgehen, dass alle Methoden mit gültigen Parametern aufgerufen werden, d. h. bei Aufruf der Methoden werden nur
+
+• gültige Namen für Fahrzeuge und Standorte übergeben,
+
+• das Format der Zeit- und Datumsangaben ist korrekt,
+
+• der Beginn eines Zeit- oder Datumsbereichs liegt nicht später als dessen Ende.
+
+Realisieren Sie außerdem eine Testklasse FahrzeugmanagerTest basierend auf JUnit. Die Klasse soll ebenfalls im Paket carsharing liegen (im NetBeans-Projekt gibt es damit unter src und test ein Verzeichnis carsharing).
