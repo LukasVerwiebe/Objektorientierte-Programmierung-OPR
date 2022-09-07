@@ -15,5 +15,3 @@ Realisieren Sie im Paket bytefolge eine Klasse Textfinder mit folgenden Methoden
 • Eine Methode int gibHaeufigkeit(String), die angibt, wie häufig das übergebene Wort in dem Datenstrom gefunden wurde. Wurde das Wort nicht gefunden, soll 0 zurückgegeben werden.
 
 Da der Eingabestrom eine unvorhersehbare Länge haben kann, dürfen Sie die Datenquelle nicht zunächst komplett einlesen, sondern müssen die Worterkennung während des Einlesens durchführen.
-
-Realisieren Sie im Paket bytefolge außerdem eine Testklasse basierend auf JUnit, um das Verhalten der Klasse Textfinder und ihrer Methoden zu testen. Erinnern Sie sich an die Vorlesung, in der wir besprochen haben, welcher Eingabestrom zum Testen geeignet ist.
