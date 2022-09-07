@@ -1,29 +1,35 @@
-# Praktische Aufgabe Nr. 11: Zahlenfolge
+# Praktische Aufgabe Nr. 13: Modulverwaltung
 
-Endliche Folgen ganzer Zahlen könnte man durch Objekte des Typs List<Integer> oder int[] repräsentieren. Aber wie sieht es mit unendlichen Folgen aus?
+In dieser Aufgabe üben Sie die Definition und Anwendung von Aufzählungstypen.
 
-Eine elegante Möglichkeit, endliche und unendliche Folgen gleichermaßen zu repräsentieren, besteht in Klassen, die eine Schnittstelle Zahlenfolge implementieren. Zahlenfolge soll folgende Methoden deklarieren:
+Stellen Sie sich als Anwendungskontext das Thema Prüfungsplanung vor. Aus einer Datenquelle werden Informationen über Module eingelesen. Jedes Modul ist einem oder mehreren Studiengängen zugeordnet. Die Gesamtheit aller Module wird in einer Modulverwaltung verwaltet, die Ausgangspunkt der Prüfungsplanung sein könnte.
 
-• Eine Methode boolean hatNaechstes(), die genau dann true liefert, wenn die Zahlenfolge noch ein weiteres Element enthält.
+Realisieren Sie dazu im Paket modul eine Klasse Modul zur Repräsentation eines Moduls, eine Klasse Modulverwaltung zur Repräsentation der Moduldaten eines Fachbereichs, eine Klasse Moduldatenleser sowie einen Aufzählungstyp Studiengang, dessen Werte alle Studiengänge des Fachbereichs repräsentieren.
 
-• Eine Methode int gibNaechstes() throws NoSuchElementException, die das nächste Element liefert oder eine Ausnahme wirft, wenn die Folge kein Element mehr enthält.
+Implementieren Sie in der Klasse Modul folgende Methoden:
 
-(Damit ist die Schnittstelle Zahlenfolge vergleichbar der Schnittstelle Enumeration, jedoch eingeschränkt auf Werte des Typs int.)
+• Einen Konstruktor Modul(String, String). Der erste Parameter ist das Kürzel des Moduls, der zweite die Bezeichnung.
 
-Definieren Sie im Paket zahlenfolge die Schnittstelle Zahlenfolge und realisieren Sie im gleichen Paket folgende Klassen, die diese Schnittstelle implementieren:
+• Eine Instanzmethode void fuegeHinzu(Studiengang) throws IllegalArgumentException. Durch Anwendung der Methode wird einem Modul mitgeteilt, dass es in dem entsprechenden Studiengang angeboten wird. Ein Modul kann in mehreren Studiengängen angeboten werden. Es soll eine Ausnahme mit der Meldung "Ein Modul kann nicht gleichzeitig zu Bachelor- und Masterstudiengang gehören." geworfen werden, wenn einem Modul sowohl ein Bachelor-, als auch ein Masterstudiengang übergeben wird.
 
-• Eine Klasse EndlicheFolge mit einem Konstruktor EndlicheFolge(int[]). Ein Objekt dieser Klasse repräsentiert eine endliche Folge, deren Werte beim Erzeugen explizit angegeben werden.
+Implementieren Sie in der Klasse Modulverwaltung folgende Methoden:
 
-• Eine Klasse FibonacciFolge mit einem Konstruktor FibonacciFolge(). Ein Objekt dieser Klasse repräsentiert die Folge der Fibonacci-Zahlen.
+• Einen Konstruktor Modulverwaltung(), um eine Modulverwaltung zu erzeugen, in der sich anfangs kein Modul befindet.
 
-• Eine Klasse Mischfolge mit einem Konstruktor Mischfolge(Zahlenfolge, Zahlenfolge). Ein Objekt dieser Klasse repräsentiert die Folge, die aus den gemeinsamen Werten zweier Folgen besteht. Sind diese beiden Folgen sortiert, ist die Mischfolge ebenfalls sortiert. (Ansonsten kann die Mischfolge die Elemente in einer beliebigen Reihenfolge liefern. Dies bedeutet, Sie können sich bei der Realisierung auf den Fall der sortierten Folgen konzentrieren und müssen lediglich dafür sorgen, dass im anderen Fall kein Element „unter den Tisch“ fällt.)
+• Eine Instanzmethode void fuegeHinzu(Modul) throws IllegalArgumentException, durch die der Modulverwaltung ein Modul hinzugefügt wird. Es soll eine Ausnahme mit der
+Meldung "Das Modul ist bereits vorhanden." geworfen werden, wenn bereits ein Modul mit dem gleichen Kürzel vorhanden ist. 
 
-Das „Dilemma“ bei dieser Klasse ist, dass Sie für die Methode gibNaechstes nie im Vorhinein wissen, in welcher Folge sich das nächstkleinste Element befindet. Also werden Sie wohl auf beide Folgen zugreifen müssen. Was passiert aber mit dem größeren der beiden Elemente?
+• Eine Instanzmethode Set<Modul> gibModule(boolean fuerBachelor), die entweder alle Bachelormodule (für Parameter true) oder alle Mastermodule liefert. Das Ergebnis der
+Methode soll derart sein, dass die Module bei Iteration sortiert (nach Modulkürzel) durchlaufen würden.
 
-Statt hier eine spezielle „Das-Element-merke-ich-mir-für-später-Strategie“ zu implementieren, könnten Sie eine Strategie anwenden, die bei Eingabeströmen, aus denen man wie bei unseren Zahlenfolgen ebenfalls nur „vorwärts“ lesen kann, angewandt wird. Dort gibt es Klassen PushBackInputStream und PushBackReader, die ermöglichen, Bytes oder Zeichen in den Eingabestrom zurückzuschreiben. Realisieren Sie deshalb ...
+Implementieren Sie in der Klasse Moduldatenleser folgende Methode:
 
-• Eine Klasse PushBackFolge mit einem Konstruktor PushBackFolge(Zahlenfolge). Ein Objekt dieser Klasse basiert auf einer Zahlenfolge und ergänzt diese um die Fähigkeit, Werte „zurückzuschreiben“. Dazu dient die Methode schreibeZurueck(int). Wird mit dieser Methode die Zahl n zurückgeschrieben, liefert die nächste Anwendung der Methode gibNaechstes den Wert n.
+• Eine Instanzmethode void lies(Reader, Modulverwaltung), um aus den Daten der Datenquelle Informationen über Module zu lesen, daraus Modul-Objekte zu erzeugen und diese der Modulverwaltung zu übergeben.
 
-• Eine Klasse EindeutigeFolge mit einem Konstruktor EindeutigeFolge(Zahlenfolge). Ein Objekt dieser Klasse basiert auf einer Zahlenfolge und repräsentiert deren Werte ohne doppelte Elemente. Es wird davon ausgegangen, dass die übergebene Folge sortiert ist.
+• Die Datenquelle enthält in einzelnen Zeilen die Daten der Module. Jede Zeile hat folgenden Aufbau (Beispiel): OPR;Objektorientierte Programmierung;IN_BA,MI_BA,WI_BA Sie dürfen davon ausgehen, dass die Datenquelle keine Formatfehler enthält.
 
-Zum Testen und für die genaue Semantik der Methoden sind Ihnen für jede der angegebenen Klassen Testklassen vorgegeben.
+Implementieren Sie einen Aufzählungstyp Studiengang mit folgenden Eigenschaften:
+
+• Der Typ enthält Werte mit den Namen IN_BA, MI_BA, WI_BA, IN_MA, MI_MA, WI_MA und IS_MA.
+
+• Eine Instanzmethode boolean istBachelorstudiengang(), durch die ein Studiengang angibt, ob er ein Bachelorstudiengang ist.
