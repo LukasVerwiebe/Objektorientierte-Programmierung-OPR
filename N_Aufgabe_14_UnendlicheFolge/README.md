@@ -1,4 +1,4 @@
-# Praktische Aufgabe Nr. 13: Unendliche Folge
+# Praktische Aufgabe Nr. 14: Unendliche Folge
 
 Realisieren Sie im Paket folge eine Klasse UnendlicheFolge, mit der unendliche Folgen f ganzer Zahlen repräsentiert werden können, die nach folgenden Regeln aufgebaut sind:
 
