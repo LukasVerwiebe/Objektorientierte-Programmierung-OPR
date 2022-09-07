@@ -1,15 +1,19 @@
-# Praktische Aufgabe Nr. 1: Permutation
+# Praktische Aufgabe Nr. 9: Textfinder
 
-In dieser Aufgabe geht es darum, alle möglichen Anordnungen (Permutationen) von Zahlen zu generieren. Die Zahlen 0 bis 3 lassen sich z. B. als 0; 1; 2; 3 oder 1; 3; 0; 2 anordnen. (Es gibt noch 22 weitere Anordnungen dieser Zahlen. Allgemein gibt es für n verschiedene Zahlen n! Anordnungen.)
+Viele byte-orientierte Datenströme enthalten Text „in Klarschrift“. Zum Beispiel können digitale Fotos die Angabe des Kameratyps und andere Aufnahmeinformationen enthalten. Zip-Dateien enthalten die Namen der gepackten Dateien und übersetzte Java-Klassen (class-Dateien) enthalten die Namen von Klassen und Variablen im Klartext. 
 
-Realisieren Sie im Paket permutation ein Klasse Permutation mit folgenden Methoden:
+In dieser Aufgabe sollen Sie eine Klasse Textfinder schreiben, die „lesbare“ Zeichenfolgen aus einem byte-orientierten Datenstrom herausfiltert. Betrachten Sie dafür einen Bytewert b als dasjenige Zeichen, dessen Code b ist. Beispiel: der Bytewert 65 steht für das Zeichen a, da dieses Zeichen den Code 65 besitzt.
 
-• Einen Konstruktor Permutation(int), durch den für einen Parameter n ein Objekt erzeugt wird, das eine Anordnung der Zahlen 0; 1;... n - 1 repräsentiert. Die Zahlen sollen in dem erzeugten Objekt aufsteigend angeordnet sein. Sie dürfen davon ausgehen, dass der Parameter größer als 0 ist.
+Eine lesbare Zeichenfolge ist eine Bytefolge, die mit einem Buchstaben (a-z und A-Z, keine Umlaute) beginnt, gefolgt von beliebig vielen Buchstaben oder Ziffern. Der Textfinder soll die längstmöglichen „lesbaren“ Zeichenfolgen finden.
 
-• Eine Instanzmethode String gibAlsText(), die eine textuelle Darstellung einer Permutation erzeugt. In dieser Darstellung sollen die Zahlen entsprechend ihrer Anordnung hintereinander stehen, getrennt durch einen Strich. Beispiel: (new Permutation(6)).gibAlsText() soll 0-1-2-3-4-5 liefern.
+Realisieren Sie im Paket bytefolge eine Klasse Textfinder mit folgenden Methoden:
 
-• Eine Instanzmethode boolean naechstePermutation(), die zu der aktuellen Anordnung der Zahlen die lexikografisch nächste Anordnung berechnet, sofern es noch eine gibt. Falls die aktuelle Anordnung bereits die lexikografisch letzte ist, soll die Methode false liefern, sonst true.
+• Einen Konstruktor Textfinder(InputStream, int), der einen Textfinder für die übergebene Datenquelle erzeugt. Der Textfinder soll nur Wörter finden, die mindestens die angegebene Länge besitzen.
 
-Die Methode boolean naechstePermutation() soll zur aktuellen Anordnung die lexikografisch nächste berechnen. Wer den Begriff „lexikografische Ordnung“ nicht kennt, kann sich einfach vorstellen, die Zahlen wären Buchstaben eines Alphabets (0 der erste Buchstabe, 1 der zweite, 2 der dritte usw.). Dann ist eine Anordnung der Zahlen wie ein Wort aus diesen Buchstaben - und die lexikografische Reihenfolge der Wörter entspräche der Reihenfolge der Wörter in einem Lexikon.
+• Eine Methode Set<String> gibWoerter(), die die Menge aller Wörter, die der Textfinder in der Datenquelle gefunden hat, zurückgibt.
 
-Realisieren Sie im Paket permutation außerdem eine Klasse PermutationTest zum Test der Methoden der Klasse Permutation.
+• Eine Methode int gibHaeufigkeit(String), die angibt, wie häufig das übergebene Wort in dem Datenstrom gefunden wurde. Wurde das Wort nicht gefunden, soll 0 zurückgegeben werden.
+
+Da der Eingabestrom eine unvorhersehbare Länge haben kann, dürfen Sie die Datenquelle nicht zunächst komplett einlesen, sondern müssen die Worterkennung während des Einlesens durchführen.
+
+Realisieren Sie im Paket bytefolge außerdem eine Testklasse basierend auf JUnit, um das Verhalten der Klasse Textfinder und ihrer Methoden zu testen. Erinnern Sie sich an die Vorlesung, in der wir besprochen haben, welcher Eingabestrom zum Testen geeignet ist.
