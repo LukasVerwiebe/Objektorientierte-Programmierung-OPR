@@ -1,15 +1,25 @@
-# Praktische Aufgabe Nr. 1: Permutation
+# Praktische Aufgabe Nr. 2: Mitarbeiter
 
-In dieser Aufgabe geht es darum, alle möglichen Anordnungen (Permutationen) von Zahlen zu generieren. Die Zahlen 0 bis 3 lassen sich z. B. als 0; 1; 2; 3 oder 1; 3; 0; 2 anordnen. (Es gibt noch 22 weitere Anordnungen dieser Zahlen. Allgemein gibt es für n verschiedene Zahlen n! Anordnungen.)
+In dieser Aufgabe geht es um Mitarbeiter und Vorgesetzte in einem Unternehmen. Mitarbeiter sind alle Personen, die in dem Unternehmen beschäftigt sind. Vorgesetzte sind spezielle Mitarbeiter, die anderen Mitarbeitern vorgesetzt sein können. Jeder Mitarbeiter hat höchstens einen Vorgesetzten.
 
-Realisieren Sie im Paket permutation ein Klasse Permutation mit folgenden Methoden:
+Alle Personen besitzen einen Namen und ein Bestelllimit, innerhalb dessen sie Bestellungen durchführen können. Das Limit gilt pro Bestellung. Vorgesetzte können ein individuelles Bestelllimit besitzen, alle anderen Mitarbeiter haben ein einheitliches Limit. Dieses Limit beträgt – sofern kein anderer Wert festgelegt wurde – EUR 20,-. Vorgesetzte, die kein explizites Limit haben, besitzen das Limit wie „normale“ Mitarbeiter.
 
-• Einen Konstruktor Permutation(int), durch den für einen Parameter n ein Objekt erzeugt wird, das eine Anordnung der Zahlen 0; 1;... n - 1 repräsentiert. Die Zahlen sollen in dem erzeugten Objekt aufsteigend angeordnet sein. Sie dürfen davon ausgehen, dass der Parameter größer als 0 ist.
+Realisieren Sie im Paket personal zwei Klassen Mitarbeiter und Vorgesetzter, deren Objekte die Personen des Unternehmens repräsentieren. Ein Vorgesetzter ist auch ein Mitarbeiter. Deshalb sollen beide Klassen hierarchisch zueinander angeordnet werden.
 
-• Eine Instanzmethode String gibAlsText(), die eine textuelle Darstellung einer Permutation erzeugt. In dieser Darstellung sollen die Zahlen entsprechend ihrer Anordnung hintereinander stehen, getrennt durch einen Strich. Beispiel: (new Permutation(6)).gibAlsText() soll 0-1-2-3-4-5 liefern.
+Realisieren Sie folgende Methoden (in welchen Klassen, müssen Sie z. T. selbst entscheiden):
 
-• Eine Instanzmethode boolean naechstePermutation(), die zu der aktuellen Anordnung der Zahlen die lexikografisch nächste Anordnung berechnet, sofern es noch eine gibt. Falls die aktuelle Anordnung bereits die lexikografisch letzte ist, soll die Methode false liefern, sonst true.
+• Einen Konstruktor Mitarbeiter(String), durch den ein „gewöhnlicher“ Mitarbeiter mit einem bestimmten Namen erzeugt wird.
 
-Die Methode boolean naechstePermutation() soll zur aktuellen Anordnung die lexikografisch nächste berechnen. Wer den Begriff „lexikografische Ordnung“ nicht kennt, kann sich einfach vorstellen, die Zahlen wären Buchstaben eines Alphabets (0 der erste Buchstabe, 1 der zweite, 2 der dritte usw.). Dann ist eine Anordnung der Zahlen wie ein Wort aus diesen Buchstaben - und die lexikografische Reihenfolge der Wörter entspräche der Reihenfolge der Wörter in einem Lexikon.
+• Einen entsprechenden Konstruktor Vorgesetzter(String).
 
-Realisieren Sie im Paket permutation außerdem eine Klasse PermutationTest zum Test der Methoden der Klasse Permutation.
+• Eine statische Methode void setzeAllgemeinesLimit(int), durch die das Bestelllimit aller Mitarbeiter sowie der Vorgesetzten ohne explizites Limit festgesetzt wird.
+
+• Eine Instanzmethode void setzeVorgesetzten(Vorgesetzter), durch die einer Person ein Vorgesetzter zugeordnet wird. Durch Aufruf dieser Methode mit Parameter null entzieht man einer Person den Vorgesetzten.
+
+• Eine Instanzmethode void setzeBestelllimit(int), durch die einem Vorgesetzten ein Limit zugeordnet wird.
+
+• Eine Instanzmethode boolean darfBestellen(int), durch die jeder Mitarbeiter (damit natürlich auch jeder Vorgesetzter) angibt, ob er eine Beschaffung in der angegebenen Höhe durchführen darf.
+
+• Eine Instanzmethode String gibInfo(), durch die jeder Mitarbeiter einen Info-Text über sich zurückgibt. Abhängig von der Person und der Tatsache, ob sie einen Vorgesetzten hat oder nicht, soll einer der folgenden (einzeiligen) Sätze zurückgegeben werden (die Namen und Beträge sind natürlich nur Beispiele).
+
+• Eine Instanzmethode String gibHierarchie(), durch die jeder Mitarbeiter seine vollständige Personalhierarchie liefert. Das Ergebnis der Methode soll mehrzeilig aufgebaut sein, jeweils eine Zeile pro Stufe der Personalhierarchie (’nn’ ist Zeichen für Zeilenumbruch). Der Mitarbeiter selbst steht am Ende der Zeichenkette, sein oberster Vorgesetzter am Anfang (s. auch Testablauf). Das Ergebnis soll nicht mit einem Zeilenumbruch enden.
