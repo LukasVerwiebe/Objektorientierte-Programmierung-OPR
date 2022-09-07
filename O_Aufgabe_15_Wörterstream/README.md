@@ -1,18 +1,5 @@
-# Praktische Aufgabe Nr. 13: Unendliche Folge
+# Praktische Aufgabe Nr. 14: Wörterstream
 
-Realisieren Sie im Paket folge eine Klasse UnendlicheFolge, mit der unendliche Folgen f ganzer Zahlen repräsentiert werden können, die nach folgenden Regeln aufgebaut sind:
+Realisieren Sie im Paket folge eine Klasse Woerterstream mit einer Methode Stream<String> gibStream(). Die Elemente des Streams sollen alle Wörter sein, die sich aus den 26 Buchstaben a bis z bilden lassen (einschließlich des leeres Worts). Der Stream enthält die Wörter in lexikografisch aufsteigender Reihenfolge. Den Anfang des Stream bildet somit das leere Wort gefolgt von a, b, ..., z, aa, ab, ..., az, ba, ..., zz, aaa, ...
 
-• f0 und f1 werden explizit festgelegt.
-
-• Für alle n > 0 wird fn+2 durch eine Rechenvorschrift aus fn und fn+1 berechnet.
-
-Die Fibonacci-Folge ist eine Folge, die nach diesen Regeln aufgebaut ist. 
-
-Realisieren Sie in der Klasse UnendlicheFolge
-
-• einen Konstruktor UnendlicheFolge(int, int, IntBinaryOperator), durch den eine Folge für zwei Startwerte und eine Rechenvorschrift erzeugt wird (IntBinaryOperator
-ist eine Schnittstelle aus dem Paket java.util.function),
-
-• eine Methode int gibWert(), die den nächsten Wert der Folge liefert. Realisieren Sie im gleichen Paket außerdem eine Testklasse UnendlicheFolgeTest. Verwenden
-Sie als Testfolge die Fibonacci-Folge und testen Sie, dass die ersten 6 Folgenwerte (0; 1; 1; 2; 3; 5; ...) korrekt geliefert werden.
-
+Realisieren Sie im gleichen Paket außerdem eine Testklasse WoerterstreamTest, in der Sie ein sinnvolles Anfangsstück des Streams verwenden und insbesondere testen, ob die Übergänge, bei denen die Wörter länger werden (z. B. von z zu aa), richtig funktionieren.

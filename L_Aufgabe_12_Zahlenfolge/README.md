@@ -1,38 +1,29 @@
-# Praktische Aufgabe Nr. 10: Textverarbeiter
+# Praktische Aufgabe Nr. 11: Zahlenfolge
 
-In dieser Aufgabe geht es
+Endliche Folgen ganzer Zahlen könnte man durch Objekte des Typs List<Integer> oder int[] repräsentieren. Aber wie sieht es mit unendlichen Folgen aus?
 
-• allgemein um die wortweise Verarbeitung von Texten aus beliebigen zeichenorientierten Datenquellen und
+Eine elegante Möglichkeit, endliche und unendliche Folgen gleichermaßen zu repräsentieren, besteht in Klassen, die eine Schnittstelle Zahlenfolge implementieren. Zahlenfolge soll folgende Methoden deklarieren:
 
-• speziell um die Indexierung von Texten.
+• Eine Methode boolean hatNaechstes(), die genau dann true liefert, wenn die Zahlenfolge noch ein weiteres Element enthält.
 
-Realisieren Sie dazu im Paket textverarbeitung eine Klasse Textverarbeiter. Aufgabe eines Objekts dieser Klasse ist es, den gesamten Text einer zeichenorientierten Datenquelle einzulesen und die einzelnen Wörter einem Wortverarbeiter zur weiteren Verarbeitung zu übergeben.
+• Eine Methode int gibNaechstes() throws NoSuchElementException, die das nächste Element liefert oder eine Ausnahme wirft, wenn die Folge kein Element mehr enthält.
 
-Implementieren Sie in der Klasse Textverarbeiter folgende Methoden:
+(Damit ist die Schnittstelle Zahlenfolge vergleichbar der Schnittstelle Enumeration, jedoch eingeschränkt auf Werte des Typs int.)
 
-• Einen Konstruktor Textverarbeiter(Wortverarbeiter). Durch den Parameter wird dem Textverarbeiter der Wortverarbeiter übergeben, der die Verarbeitung der einzelnen Wörter übernimmt.
+Definieren Sie im Paket zahlenfolge die Schnittstelle Zahlenfolge und realisieren Sie im gleichen Paket folgende Klassen, die diese Schnittstelle implementieren:
 
-• Eine Instanzmethode void verarbeite(Reader) throws IOException zur Verarbeitung des Texts aus der übergebenen Datenquelle. Zeichen zur Worttrennung sind .,:;!?-()
-sowie das Leerzeichen.
+• Eine Klasse EndlicheFolge mit einem Konstruktor EndlicheFolge(int[]). Ein Objekt dieser Klasse repräsentiert eine endliche Folge, deren Werte beim Erzeugen explizit angegeben werden.
 
-Realisieren Sie im Paket textverarbeitung außerdem eine Schnittstelle Wortverarbeiter mit folgenden Methoden:
+• Eine Klasse FibonacciFolge mit einem Konstruktor FibonacciFolge(). Ein Objekt dieser Klasse repräsentiert die Folge der Fibonacci-Zahlen.
 
-• Eine Instanzmethode void verarbeite(String) zur Verarbeitung eines Worts.
+• Eine Klasse Mischfolge mit einem Konstruktor Mischfolge(Zahlenfolge, Zahlenfolge). Ein Objekt dieser Klasse repräsentiert die Folge, die aus den gemeinsamen Werten zweier Folgen besteht. Sind diese beiden Folgen sortiert, ist die Mischfolge ebenfalls sortiert. (Ansonsten kann die Mischfolge die Elemente in einer beliebigen Reihenfolge liefern. Dies bedeutet, Sie können sich bei der Realisierung auf den Fall der sortierten Folgen konzentrieren und müssen lediglich dafür sorgen, dass im anderen Fall kein Element „unter den Tisch“ fällt.)
 
-• Eine Instanzmethode void verarbeiteZeilenende(), durch die dem Wortverarbeiter mitgeteilt wird, dass das Ende einer Textzeile erreicht wurde.
+Das „Dilemma“ bei dieser Klasse ist, dass Sie für die Methode gibNaechstes nie im Vorhinein wissen, in welcher Folge sich das nächstkleinste Element befindet. Also werden Sie wohl auf beide Folgen zugreifen müssen. Was passiert aber mit dem größeren der beiden Elemente?
 
-Ein Textverarbeiter kann nun zusammen mit geeigneten Wortverarbeitern beliebige Operationen auf den Wörtern eines Texts ausführen. Eine mögliche Operation ist es, einen Wortindex für einen Text zu erstellen. Der Wortindex eines Texts besteht aus den Wörtern des Texts (bestimmte Ausschlusswörter sollen ausgenommen werden) und der Information, in welchen Zeilen des Texts die einzelnen Wörter vorkommen. Der Index enthält kein Wort doppelt.
+Statt hier eine spezielle „Das-Element-merke-ich-mir-für-später-Strategie“ zu implementieren, könnten Sie eine Strategie anwenden, die bei Eingabeströmen, aus denen man wie bei unseren Zahlenfolgen ebenfalls nur „vorwärts“ lesen kann, angewandt wird. Dort gibt es Klassen PushBackInputStream und PushBackReader, die ermöglichen, Bytes oder Zeichen in den Eingabestrom zurückzuschreiben. Realisieren Sie deshalb ...
 
-Realisieren Sie im Paket textverarbeitung eine Klasse Indexierer, die mit einem Textverarbeiter verwendet werden kann, mit folgenden Methoden:
+• Eine Klasse PushBackFolge mit einem Konstruktor PushBackFolge(Zahlenfolge). Ein Objekt dieser Klasse basiert auf einer Zahlenfolge und ergänzt diese um die Fähigkeit, Werte „zurückzuschreiben“. Dazu dient die Methode schreibeZurueck(int). Wird mit dieser Methode die Zahl n zurückgeschrieben, liefert die nächste Anwendung der Methode gibNaechstes den Wert n.
 
-• Einen Konstruktor Indexierer(Collection<String>), durch den ein Indexierer erzeugt wird. Der Parameter gibt die Ausschlusswörter an.
+• Eine Klasse EindeutigeFolge mit einem Konstruktor EindeutigeFolge(Zahlenfolge). Ein Objekt dieser Klasse basiert auf einer Zahlenfolge und repräsentiert deren Werte ohne doppelte Elemente. Es wird davon ausgegangen, dass die übergebene Folge sortiert ist.
 
-• Eine Instanzmethode List<String> gibWoerter(), die alle Wörter des Index in alphabetisch sortierter Reihenfolge liefert. Es soll die „gewöhnliche“ Ordnung auf Strings verwendet werden.
-
-• Eine Instanzmethode String gibZeilennummern(String), die in Form einer Zeichenkette alle Zeilennummern zu einem Wort liefert. Die Zeichenkette enthält die Zeilennummern in aufsteigender Reihenfolge, jeweils durch Komma und Leerzeichen getrennt. Keine Zeilennummer erscheint doppelt.
-
-Beispiel: Kommt ein Wort in einem Text in den Zeilen 1, 3, 4 und 24 vor und indexiert man diesen Text, dann liefert diese Methode für das Wort die Zeichenkette "1,␣3,␣4,␣24". 
-
-Ist das übergebene Wort nicht im Index enthalten, liefert die Methode die leere Zeichenkette.
-
-Schreiben Sie außerdem zwei Testklassen TextverarbeiterTest und IndexiererTest. Überlegen Sie sich dafür selbst sinnvolle Testmuster. Selbstverständlich ist es ratsam, mit den Testklassen zu beginnen.
+Zum Testen und für die genaue Semantik der Methoden sind Ihnen für jede der angegebenen Klassen Testklassen vorgegeben.
