@@ -1,15 +1,9 @@
-# Praktische Aufgabe Nr. 1: Permutation
+# Praktische Aufgabe Nr. 4: StringTokenizer
 
-In dieser Aufgabe geht es darum, alle möglichen Anordnungen (Permutationen) von Zahlen zu generieren. Die Zahlen 0 bis 3 lassen sich z. B. als 0; 1; 2; 3 oder 1; 3; 0; 2 anordnen. (Es gibt noch 22 weitere Anordnungen dieser Zahlen. Allgemein gibt es für n verschiedene Zahlen n! Anordnungen.)
+Der Zweck dieser Aufgabe ist es, das Schreiben von JUnit-Tests zu üben.
 
-Realisieren Sie im Paket permutation ein Klasse Permutation mit folgenden Methoden:
+Realisieren Sie im Paket string eine Klasse StringTest basierend auf JUnit zum Test der Methode String substring(int, int) der Klasse String. Überlegen Sie sich selbst mindestens vier sinnvolle Testfälle. Lesen Sie bitte auch die JavaDoc-Dokumentation zur Methode substring. Sie werden sehen, dass die Methode in einem speziellen Fall, abhängig von den beiden nummerischen Parametern, dasselbe Objekt liefert, auf das die Methode angewendet wird. Einer der Testfälle, die Sie schreiben, soll dies prüfen (Stichwort assertSame).
 
-• Einen Konstruktor Permutation(int), durch den für einen Parameter n ein Objekt erzeugt wird, das eine Anordnung der Zahlen 0; 1;... n - 1 repräsentiert. Die Zahlen sollen in dem erzeugten Objekt aufsteigend angeordnet sein. Sie dürfen davon ausgehen, dass der Parameter größer als 0 ist.
+Realisieren Sie im Paket string ebenfalls eine Klasse TokensTest zum Test der statischen Methode String[] tokens(String, String) der Klasse Tokens. Überlegen Sie sich selbst geeignete Testfälle. Die Klasse Tokens müssen Sie ebenfalls im Paket string realisieren. Die Methode tokens(s, t) soll alle Tokens in einem Feld liefern, die ein durch new StringTokenizer(s, t) erzeugter StringTokenizer liefern würde.
 
-• Eine Instanzmethode String gibAlsText(), die eine textuelle Darstellung einer Permutation erzeugt. In dieser Darstellung sollen die Zahlen entsprechend ihrer Anordnung hintereinander stehen, getrennt durch einen Strich. Beispiel: (new Permutation(6)).gibAlsText() soll 0-1-2-3-4-5 liefern.
-
-• Eine Instanzmethode boolean naechstePermutation(), die zu der aktuellen Anordnung der Zahlen die lexikografisch nächste Anordnung berechnet, sofern es noch eine gibt. Falls die aktuelle Anordnung bereits die lexikografisch letzte ist, soll die Methode false liefern, sonst true.
-
-Die Methode boolean naechstePermutation() soll zur aktuellen Anordnung die lexikografisch nächste berechnen. Wer den Begriff „lexikografische Ordnung“ nicht kennt, kann sich einfach vorstellen, die Zahlen wären Buchstaben eines Alphabets (0 der erste Buchstabe, 1 der zweite, 2 der dritte usw.). Dann ist eine Anordnung der Zahlen wie ein Wort aus diesen Buchstaben - und die lexikografische Reihenfolge der Wörter entspräche der Reihenfolge der Wörter in einem Lexikon.
-
-Realisieren Sie im Paket permutation außerdem eine Klasse PermutationTest zum Test der Methoden der Klasse Permutation.
+Realisieren Sie im gleichen Paket schließlich eine Klasse StringTokenizerTest zum Test der Methoden String nextToken() und boolean hasMoreTokens() der Klasse StringTokenizer. Erzeugen Sie zum Test einen StringTokenizer für die Zeichenkette "--abc␣+-xyz" und die Trenner "+-". In dieser Testklasse ist eine setUp-Methode sinnvoll.
