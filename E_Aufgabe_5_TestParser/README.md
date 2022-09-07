@@ -1,15 +1,41 @@
-# Praktische Aufgabe Nr. 1: Permutation
+# Praktische Aufgabe Nr. 5: Test Parser
 
-In dieser Aufgabe geht es darum, alle möglichen Anordnungen (Permutationen) von Zahlen zu generieren. Die Zahlen 0 bis 3 lassen sich z. B. als 0; 1; 2; 3 oder 1; 3; 0; 2 anordnen. (Es gibt noch 22 weitere Anordnungen dieser Zahlen. Allgemein gibt es für n verschiedene Zahlen n! Anordnungen.)
+In einer späteren praktischen Aufgabe realisieren Sie einen Parser für arithmetische Ausdrücke in Infixdarstellung. Die Ausdrücke bestehen aus Konstanten (ganzzahlig und > 0), aus Variablen, den vier Grundrechenarten und Klammern. Ein Beispiel für einen solchen Ausdruck ist
 
-Realisieren Sie im Paket permutation ein Klasse Permutation mit folgenden Methoden:
+Damit Sie die JUnit-Tests realisieren können, müssen Sie die Klassen und Methoden kennen, diespäter das gewünschte Verhalten realisieren.
 
-• Einen Konstruktor Permutation(int), durch den für einen Parameter n ein Objekt erzeugt wird, das eine Anordnung der Zahlen 0; 1;... n - 1 repräsentiert. Die Zahlen sollen in dem erzeugten Objekt aufsteigend angeordnet sein. Sie dürfen davon ausgehen, dass der Parameter größer als 0 ist.
+Klasse Parser:
+Ein Objekt dieser Klasse repräsentiert einen Parser, der zur Infixdarstellung eines Ausdrucks die zugehörige Baumdarstellung berechnet. Die Klasse enthält die
 
-• Eine Instanzmethode String gibAlsText(), die eine textuelle Darstellung einer Permutation erzeugt. In dieser Darstellung sollen die Zahlen entsprechend ihrer Anordnung hintereinander stehen, getrennt durch einen Strich. Beispiel: (new Permutation(6)).gibAlsText() soll 0-1-2-3-4-5 liefern.
+• Instanzmethode Ausdruck parse(String), die die Textdarstellung eines Ausdrucks parst und die Baumdarstellung in Form eines Objekts der Klasse Ausdruck zurückgibt. Die Infixdarstellung kann beliebig viele Leerzeichen (einschließlich 0 Leerzeichen!) zwischen den Bestandteilen des Ausdrucks enthalten.
 
-• Eine Instanzmethode boolean naechstePermutation(), die zu der aktuellen Anordnung der Zahlen die lexikografisch nächste Anordnung berechnet, sofern es noch eine gibt. Falls die aktuelle Anordnung bereits die lexikografisch letzte ist, soll die Methode false liefern, sonst true.
+Klasse Ausdruck:
+Ausdrücke werden durch verschiedene Klassen repräsentiert, abhängig davon, ob es sich um Konstanten oder Variablen handelt, oder um Operatoren (Grundrechenarten), die zwei Ausdrücke miteinander verknüpfen. Die Klasse Ausdruck ist die abstrakte Oberklasse dieser Klassen. Sie enthält die
 
-Die Methode boolean naechstePermutation() soll zur aktuellen Anordnung die lexikografisch nächste berechnen. Wer den Begriff „lexikografische Ordnung“ nicht kennt, kann sich einfach vorstellen, die Zahlen wären Buchstaben eines Alphabets (0 der erste Buchstabe, 1 der zweite, 2 der dritte usw.). Dann ist eine Anordnung der Zahlen wie ein Wort aus diesen Buchstaben - und die lexikografische Reihenfolge der Wörter entspräche der Reihenfolge der Wörter in einem Lexikon.
+• abstrakte Instanzmethode int gibWert(Variablenbelegung), die den Wert dieses Ausdrucks basierend auf der übergebenen Variablenbelegung liefert.
 
-Realisieren Sie im Paket permutation außerdem eine Klasse PermutationTest zum Test der Methoden der Klasse Permutation.
+Klasse Variablenbelegung:
+Ein Objekt dieser Klasse repräsentiert die Belegung von (vielen) Variablen. Die Klasse enthält
+
+• Konstruktor Variablenbelegung(), durch den eine Variablenbelegung erzeugt wird, in der zunächst keiner Variablen ein Wert zugeordnet ist.
+
+• Instanzmethode void belege(String, int), durch die einer Variablen (1. Parameter) ein Wert (2. Parameter) zugeordnet wird. Ein evtl. vorhandener alter Wert wird dabei überschrieben.
+
+• Enthält Instanzmethode int gibWert(String), die den Wert liefert, der der angegebenen Variable zugeordnet ist.
+
+Klasse Konstante:
+Ein Objekt dieser Klasse repräsentiert eine Konstante. Die Klasse ist direkte Unterklasse von Ausdruck und enthält den
+
+• Konstruktor Konstante(int), durch den ein konstanter Ausdruck für den angegebenen Werterzeugt wird.
+
+Klasse Variable:
+Ein Objekt dieser Klasse repräsentiert eine Variable. Die Klasse ist direkte Unterklasse von Ausdruck und enthält den
+
+• Konstruktor Variable(String), durch den eine Variable mit dem angegebenen Namen erzeugt wird.
+
+Klasse Operatorausdruck:
+Ein Objekt dieser Klasse repräsentiert einen Ausdruck, der zwei Ausdrücke mit einem Operator verknüpft. Die Klasse ist direkte Unterklasse von Ausdruck und enthält den
+
+• Konstruktor Operatorausdruck(Ausdruck, char, Ausdruck), durch den ein arithmetischer Ausdruck mit den angegebenen Teilausdrücken und dem Operatorsymbol erzeugt wird.
+
+Realisieren Sie nun in dieser Aufgabe basierend auf JUnit Testklassen ParserTest, KonstanteTest, VariableTest und OperatorausdruckTest zum Test der Methoden der Anwendungsklassen Parser, etc. Die Testklassen sollen im Paket ausdruck angelegt werden.
