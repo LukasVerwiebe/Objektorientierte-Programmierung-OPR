@@ -1,15 +1,25 @@
-# Praktische Aufgabe Nr. 1: Permutation
+# Praktische Aufgabe Nr. 3: Operatoren
 
-In dieser Aufgabe geht es darum, alle möglichen Anordnungen (Permutationen) von Zahlen zu generieren. Die Zahlen 0 bis 3 lassen sich z. B. als 0; 1; 2; 3 oder 1; 3; 0; 2 anordnen. (Es gibt noch 22 weitere Anordnungen dieser Zahlen. Allgemein gibt es für n verschiedene Zahlen n! Anordnungen.)
+Der Zweck dieser Aufgabe ist es, die wichtigen Konzepte dieses Kapitels – Hierarchie von Klassen, Überschreiben von Methoden, abstrakte Klassen und Methoden, Template-Methoden – an einem möglichst kleinen, einfachen Beispiel zu üben. Es geht in dieser Aufgabe um Operatoren. Ein Operator kann genau zwei Dinge:
 
-Realisieren Sie im Paket permutation ein Klasse Permutation mit folgenden Methoden:
+• Er kann auf ein Argument angewendet werden und liefert einen Wert.
 
-• Einen Konstruktor Permutation(int), durch den für einen Parameter n ein Objekt erzeugt wird, das eine Anordnung der Zahlen 0; 1;... n - 1 repräsentiert. Die Zahlen sollen in dem erzeugten Objekt aufsteigend angeordnet sein. Sie dürfen davon ausgehen, dass der Parameter größer als 0 ist.
+• Er kann eine textuelle Information über sich zurückgeben.
 
-• Eine Instanzmethode String gibAlsText(), die eine textuelle Darstellung einer Permutation erzeugt. In dieser Darstellung sollen die Zahlen entsprechend ihrer Anordnung hintereinander stehen, getrennt durch einen Strich. Beispiel: (new Permutation(6)).gibAlsText() soll 0-1-2-3-4-5 liefern.
+Realisieren Sie im Paket operator ein abstrakte Klasse Operator mit folgenden Methoden:
 
-• Eine Instanzmethode boolean naechstePermutation(), die zu der aktuellen Anordnung der Zahlen die lexikografisch nächste Anordnung berechnet, sofern es noch eine gibt. Falls die aktuelle Anordnung bereits die lexikografisch letzte ist, soll die Methode false liefern, sonst true.
+• Eine Methode public abstract double wendeAn(double argument), um den Operator auf das übergebene Argument anzuwenden.
 
-Die Methode boolean naechstePermutation() soll zur aktuellen Anordnung die lexikografisch nächste berechnen. Wer den Begriff „lexikografische Ordnung“ nicht kennt, kann sich einfach vorstellen, die Zahlen wären Buchstaben eines Alphabets (0 der erste Buchstabe, 1 der zweite, 2 der dritte usw.). Dann ist eine Anordnung der Zahlen wie ein Wort aus diesen Buchstaben - und die lexikografische Reihenfolge der Wörter entspräche der Reihenfolge der Wörter in einem Lexikon.
+• Eine (Template-)Methode public String gibInfo(), durch die der Operator eine textuelle Information über sich gibt. Diese Methode ist eine Template-Methode. Sie ist nicht abstrakt, sondern wird konkret implementiert.
 
-Realisieren Sie im Paket permutation außerdem eine Klasse PermutationTest zum Test der Methoden der Klasse Permutation.
+Realisieren Sie im Paket operator darüber hinaus eine Klasse Fakultaet als direkte Unterklasse von Operator. Sie dürfen bei der Implementierung der Methode wendeAn davon ausgehen, dass die Methode nur auf sinnvolle Argumente angewendet wird, also nur auf natürliche Zahlen einschließlich 0. Weitere Hinweise auf die Realisierung dieser Klasse ergeben sich aus dem unten dargestellten Testablauf.
+
+Realisieren Sie im Paket operator ebenfalls eine Klasse Addierer. Addition scheint nicht zum Konzept der Klasse Operator zu passen, denn die Methode wendeAn besitzt nur einen Parameter, wogegen man bei Addition an die Verknüpfung von zwei Zahlen denkt. Keine Sorge! Es passt, wenn man den Operator zur Addition bei der Erzeugung mit einem Parameter versieht. Durch new Addierer(2.5) erzeugt man einen Addierer, der bei wendeAn zum übergebenen Argument 2.5 addiert. Beispiel: new Addierer(2.5).wendeAn(1.3) liefert den Wert 3.8. Durch new Addierer(2.5) erzeugt man somit einen Addierer, der bei wendeAn immer 2.5 hinzuaddiert. Realisieren Sie in der Klasse Addierer einen entsprechenden Konstruktor.
+
+Da man dieses Prinzip natürlich auch auf andere binäre Operatoren (Multiplikation, Division, ...) übertragen kann, realisieren Sie im Paket operator außerdem eine abstrakte Klasse BinaererOperator als direkte Unterklasse von Operator.
+
+Die Klasse Addierer ist direkte Unterklasse von BinaererOperator.
+
+Realisieren Sie im Paket operator ebenfalls eine Klasse Dividierer.
+
+Realisieren Sie schließlich im gleichen Paket eine Klasse OperatorTest mit einer main-Methode.
