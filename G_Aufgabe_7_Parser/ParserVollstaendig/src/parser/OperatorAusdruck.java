@@ -5,8 +5,7 @@ package parser;
  * Enthält Konstruktor OperatorAusdruck(Ausdruck, char, Ausdruck), durch den ein
  * arithmetischer Ausdruck mit den angegebenen Teilausdrücken und dem
  * Operatorsymbol erzeugt wird.
- *
- * @author apex
+ * @author Lukas
  */
 public class OperatorAusdruck extends Ausdruck {
     

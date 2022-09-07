@@ -2,11 +2,16 @@
 package personal;
 
 /**
- *
+ * In dieser Klasse wurden die Testfälle für die Klassen Mitarbeiter und 
+ * Vorgesetzter realisiert.
  * @author Lukas
  */
-public class Test {
+public class PersonalTest {
     
+    /**
+     * Erstellung von Testwerten und Test der Klassenfunktionen
+     * @param args 
+     */
     public static void main(String[] args) {
         
         Mitarbeiter test = new Mitarbeiter("Hermann");      

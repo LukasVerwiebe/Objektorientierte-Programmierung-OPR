@@ -11,8 +11,7 @@ import java.util.HashMap;
  * alter Wert wird dabei überschrieben. Enthält Instanzmethode int
  * gibWert(String), die den Wert liefert, der der angegebenen Variable
  * zugeordnet ist.
- *
- * @author apex
+ * @author Lukas
  */
 public class Variablenbelegung {
 

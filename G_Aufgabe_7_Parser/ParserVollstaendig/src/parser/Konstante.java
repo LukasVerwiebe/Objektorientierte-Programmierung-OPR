@@ -4,8 +4,7 @@ package parser;
 /**
  * Enthält Konstruktor Konstante(int), durch den ein konstanter Ausdruck mit dem
  * angegebenen Wert erzeugt wird.
- *
- * @author apex
+ * @author Lukas
  */
 public class Konstante extends Ausdruck {
     private int wert;

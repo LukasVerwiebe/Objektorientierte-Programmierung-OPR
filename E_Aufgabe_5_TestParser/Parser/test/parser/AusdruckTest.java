@@ -6,12 +6,12 @@ import org.junit.Test;
 
 /**
  *
- * @author apex
+ * @author Lukas
  */
 public class AusdruckTest {
 
-    Ausdruck sollAusdruck;
-    Variablenbelegung belegung;
+    private Ausdruck sollAusdruck;
+    private Variablenbelegung belegung;
     
     @Test
     public void testGibWert() {

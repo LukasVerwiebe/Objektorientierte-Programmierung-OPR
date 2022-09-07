@@ -4,8 +4,7 @@ package parser;
 /**
  * Enthält Konstruktor Variable(String), durch den eine Variable mit dem
  * angegebenen Namen erzeugt wird.
- *
- * @author apex
+ * @author Lukas
  */
 public class Variable extends Ausdruck {
 
