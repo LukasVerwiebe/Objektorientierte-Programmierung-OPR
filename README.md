@@ -3,7 +3,7 @@ Dieses Projekt beinhaltet alle Praktischen Übungen des Kurses Objektorientierte
 
 In diesem Kurs ging es um das erlernen der objektorientierten Programmierung, die ein zukünftiger Informatiker benötigt. Als Programmiersprache wurde dabei Java verwendet.
 
-In diesem Kurs sollte die Bedeutung von Konzeption und Dokumentation für die Programmierung erlernt werden. Gegenüber dem Kurs Einführung in die Programmierung hat sich der Fokus von kleinteiligen Elementen der Programmierung zu achitektonischen Aspekten der Software-Entwicklung verschoben. 
+Die Studenten sollten die Bedeutung von Konzeption und Dokumentation für die Programmierung erlernen. Gegenüber dem Kurs Einführung in die Programmierung hat sich der Fokus von kleinteiligen Elementen der Programmierung zu achitektonischen Aspekten der Software-Entwicklung verschoben. 
 
 
 ## Themanbereiche:
