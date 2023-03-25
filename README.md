@@ -1,5 +1,5 @@
 # Objektorientierte-Programmierung-OPR
-Dieses Projekt beinhaltet alle Praktischen Übungen des Kurses Objektorientierte Programmierung (OPR).
+Dieses Projekt beinhaltet alle praktischen Übungen des Kurses Objektorientierte Programmierung (OPR).
 
 In diesem Kurs ging es um das erlernen der objektorientierten Programmierung, die ein zukünftiger Informatiker benötigt. Als Programmiersprache wurde dabei Java verwendet.
 
